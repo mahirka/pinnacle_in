@@ -1,0 +1,82 @@
+.app_titel {
+  text-align: center;
+}
+
+.head_booking {
+  font-size: 20px;
+  font-weight: 400;
+  color: black;
+}
+
+.head_booking_last {
+  font-size: 20px;
+  font-weight: 400;
+  color: black;
+  margin-left: 11px;
+}
+
+.main_card_booking {
+  background: var(--ion-color-greycard);
+  box-shadow: none;
+  border-radius: 12px;
+  padding: 6px;
+  margin: 5px 15px 16px;
+}
+
+ion-col.border {
+  border-bottom: 1px solid white;
+  padding: 8px 0px;
+}
+
+.green {
+  background: var(--ion-color-greycard);
+  color: var( --ion-color-warning-contrast);
+  padding-bottom: 20px;
+  box-shadow: none;
+  border-radius: 12px;
+  padding: 6px;
+  margin: 5px 15px 16px;
+}
+.ion-color-light {
+  --ion-color-base: #9c8349 !important;
+  --ion-color-base-rgb: var(--ion-color-light-rgb, 244, 245, 248) !important;
+  --ion-color-contrast: #fff !important;
+  --ion-color-contrast-rgb: var(--ion-color-light-contrast-rgb, 0, 0, 0) !important;
+  --ion-color-shade: var(--ion-color-light-shade, #d7d8da) !important;
+  --ion-color-tint: var(--ion-color-light-tint, #f5f6f9) !important;
+}
+.ion-color-dark {
+  --ion-color-base: #9c8349 !important;
+  --ion-color-base-rgb: var(--ion-color-dark-rgb, 34, 36, 40) !important;
+  --ion-color-contrast: var(--ion-color-dark-contrast, #fff) !important;
+  --ion-color-contrast-rgb: var(--ion-color-dark-contrast-rgb, 255, 255, 255) !important;
+  --ion-color-shade: var(--ion-color-dark-shade, #1e2023) !important;
+  --ion-color-tint: var(--ion-color-dark-tint, #383a3e) !important;
+}
+ion-card .list-md {
+  background: var(--ion-color-greycard);
+}
+
+ion-modal.md.modal-default.hydrated.show-modal {
+  padding: 34px;
+}
+
+.bookingcontet {
+  color: black;
+  font-size: 14px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+ion-button.cnfbtn {
+  padding: 4px;
+  font-size: 13px;
+  margin-top: -5px;
+}
+
+ion-fab-button.toggle_btn {
+  width: 56px;
+  height: 56px;
+}

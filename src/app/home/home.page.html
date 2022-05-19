@@ -1,0 +1,163 @@
+<ion-toolbar>
+    <ion-buttons slot="start">
+        <ion-button>
+            <ion-menu-button (click)="openMenu()">
+                <ion-icon name="menu-outline" class="menu_out"></ion-icon>
+            </ion-menu-button>
+        </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="secondary">
+        <ion-button>
+            <ion-icon name="search-outline"></ion-icon>
+        </ion-button>
+        <ion-button>
+            <ion-icon name="notifications-outline"></ion-icon>
+        </ion-button>
+    </ion-buttons>
+    <ion-title class="app_titel">Pinnacle Inn</ion-title>
+</ion-toolbar>
+
+
+<ion-content>
+
+    <div class="calendar-header">
+        <ion-row class="calendar-month">
+            <ion-col col-4 (click)="previousMonth()" class="ion-text-start">
+                <span class="primary clndr_btn"><ion-icon name="chevron-back-outline"></ion-icon> Priv</span>
+            </ion-col>
+            <ion-col col-4 class="ion-text-center clndr_tim">{{currentDate |date :'MMMM YYYY'}}</ion-col>
+            <ion-col class="ion-text-end" col-4 (click)="nextMonth()">
+                <span class="primary clndr_btn">Next   <ion-icon name="chevron-forward-outline"></ion-icon></span>
+            </ion-col>
+        </ion-row>
+    </div>
+    <!-- <div class="calendar-body">
+        <ion-grid>
+            <ion-row class="calendar-weekday">
+                <ion-col>Su</ion-col>
+                <ion-col>Mo</ion-col>
+                <ion-col>Tu</ion-col>
+                <ion-col>We</ion-col>
+                <ion-col>Th</ion-col>
+                <ion-col>Fr</ion-col>
+                <ion-col>Sa</ion-col>
+            </ion-row>
+            <ion-row class="calendar-date">
+                <ion-col col-1 *ngFor="let lastDay of daysInLastMonth" class="last-month">{{lastDay}}</ion-col>
+                <ion-col col-1 *ngFor="let day of daysInThisMonth">
+                    <span class="currentDate" *ngIf="currentDate === day; else otherDate">{{day}}</span>
+                    <ng-template #otherDate class="otherDate">{{day}}</ng-template>
+                </ion-col>
+                <ion-col col-1 *ngFor="let nextDay of daysInNextMonth" class="next-month">{{nextDay}}</ion-col>
+            </ion-row>
+        </ion-grid>
+    </div> -->
+
+
+    <div>
+        <div class="q_prev_table">
+            <!--<ion-row>
+                <ion-col size="4" class="ion-text-start">
+                    <div class="button_nav">
+                        <ion-icon name="chevron-forward-outline"></ion-icon>
+                    </div>
+                </ion-col>
+                <ion-col size="4" class="ion-text-center">
+                    <div class="month_name">
+                        <strong>{{ daysArr[0]?._d |date:'MMMM' }}</strong>
+                    </div>
+                </ion-col>
+                <ion-col size="4" class="ion-text-end">
+                    <div class="button_nav">
+                        <ion-icon name="chevron-forward-outline"></ion-icon>
+                    </div>
+                </ion-col>
+            </ion-row>-->
+            <ion-row>
+                <ion-col size="12">
+                    <ion-row class="week_d">
+                        <div class="day_box">
+                            <span>Sun</span>
+                        </div>
+                        <div class="day_box">
+                            <span>Mon</span>
+                        </div>
+                        <div class="day_box">
+                            <span>Tue</span>
+                        </div>
+                        <div class="day_box">
+                            <span>Wed</span>
+                        </div>
+                        <div class="day_box">
+                            <span>The</span>
+                        </div>
+                        <div class="day_box">
+                            <span>Fri</span>
+                        </div>
+                        <div class="day_box">
+                            <span>Sat</span>
+                        </div>
+                    </ion-row>
+                    <!-- add hidden class  for hide div -->
+                    <ion-row class="day_d">
+                        <ng-container *ngFor='let date of daysArr;let i=index'>
+                            <div class="day_box disabled" [ngClass]="getClass(date?.status)" (click)="getRooms(date)">
+                                <span [ngClass]="{'active_date':(date?._d |date:'dd MMM yyyy') == (activeDate |date:'dd MMM yyyy')}">{{ date?._d | date:'d' }}</span>
+                            </div>
+                        </ng-container>
+
+                    </ion-row>
+
+                </ion-col>
+            </ion-row>
+        </div>
+    </div>
+
+
+    <h4 class="title2" *ngIf="activeDate">{{activeDate |date:'dd MMM yyyy'}}</h4>
+
+
+    <ng-container *ngIf="roomsList && roomsList.length > 0">
+        <ion-card *ngFor="let room of roomsList" [ngClass]="getRoomClass(room)">
+            <ion-grid (click)="checkBooking(room)">
+                <ion-row>
+                    <ion-col size="8 " class="hometitel">
+                        {{room?.room?.name}}
+                    </ion-col>
+                    <ion-col size="4" class="hometitel ion-text-end">
+                        {{room?.room?.price | currency:'INR'}}
+                    </ion-col>
+                    <ng-container *ngIf="room?.bookings?.length > 0">
+                        <ng-container tainer *ngFor="let book of room.bookings;let last = last;">
+
+                            <ion-col size="12 " class="booking_name">
+                                {{book.name}}
+                            </ion-col>
+                            <ion-col size="12 " class="book_list">
+                                No of Pax : {{book.totalPeople}}
+                            </ion-col>
+                            <ion-col size="6 " class="book_list">
+                                Check In : {{book.checkIn |date:'dd MMM yyy'}}
+                            </ion-col>
+                            <ion-col size="6" class="book_list">
+                                Check Out : {{book.checkOut |date:'dd MMM yyy'}}
+                            </ion-col>
+                            <ion-col size="6 " class="book_list " [ngClass]="{'bt-border':(room?.bookings?.length>1 && !last)}">
+                                Booking Status:
+                            </ion-col>
+                            <ion-col size="6 " class="book_list " [ngClass]="{'bt-border':(room?.bookings?.length>1 && !last)}">
+                                {{book.bookingStatus}}
+                            </ion-col>
+
+                        </ng-container>
+                    </ng-container>
+                </ion-row>
+
+            </ion-grid>
+        </ion-card>
+    </ng-container>
+
+
+
+
+</ion-content>

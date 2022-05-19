@@ -1,0 +1,55 @@
+.app_titel {
+    text-align: center;
+}
+.head_booking{
+    font-size: 15px;
+    font-weight: 600;
+    color: black;
+}
+.inputpincale{
+    border: 1px solid;
+    margin-top: 8px;
+}
+.label_input{
+    font-size: 12px;
+}
+
+ion-card .list-md {
+    background: var(--ion-color-greycard);
+}
+.main_card_booking {
+    background: var(--ion-color-greycard);
+    box-shadow: none;
+    padding: 6px;
+    margin: 5px 15px 16px;
+}
+
+ion-card.main_card_booking.ion-text-center {
+    margin: 0px;
+    box-shadow: none;
+    color: #000;
+}
+
+.down_arrow{
+    color: red;
+}
+.transation_grid
+{
+    margin-bottom: 15px;
+}
+
+.up_arrow{
+    color: green;
+}
+.label_input_radio {
+    font-size: 17px;
+    margin-left:6px;
+}
+
+.item-content {
+    background-color: #7c2525;
+  }
+  .form-bg {
+    background-color: #fff;
+    margin: 11px;
+}

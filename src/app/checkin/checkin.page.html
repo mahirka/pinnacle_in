@@ -1,0 +1,140 @@
+<ion-toolbar>
+    <ion-buttons slot="start">
+        <ion-button (click)="closeModel()">
+            <ion-icon name="close"></ion-icon>
+        </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="secondary">
+        <ion-button>
+            <ion-icon name="search-outline"></ion-icon>
+        </ion-button>
+        <ion-button>
+            <ion-icon name="notifications-outline"></ion-icon>
+        </ion-button>
+    </ion-buttons>
+    <ion-title class="app_titel">Check In</ion-title>
+</ion-toolbar>
+
+<ion-content>
+
+    <ion-grid>
+        <form [formGroup]="checkInForm">
+            <ion-row>
+                <ion-col size="12">
+                    <ion-label class="label_input" position="floating">Check In Date</ion-label>
+                    <ion-input formControlName="checkIn" type="date" class="inputpincale"></ion-input>
+                    <div *ngIf="submitted && epf.checkIn.errors" class="form-error-msg">
+                        <div class="form-error-msg" *ngIf="epf.checkIn.errors.required">Check In Date is required</div>
+                    </div>
+                </ion-col>
+
+
+                <ion-col siz="12">
+
+                    <ion-label class="label_input" position="floating">Full Name</ion-label>
+                    <ion-input class="inputpincale" formControlName="name" placeholder="Full Name"></ion-input>
+                    <div *ngIf="submitted && epf.name.errors" class="form-error-msg">
+                        <div class="form-error-msg" *ngIf="epf.name.errors.required">Name is required</div>
+                    </div>
+                </ion-col>
+
+                <ion-col size="12">
+                    <ion-label class="label_input" position="floating">Upload ID Proof</ion-label>
+                    <input type="file" (change)="fileChangeEvent2($event)" class="inputpincale">
+                </ion-col>
+
+                <ion-col size="12">
+                    <ion-label class="label_input" position="floating">Main Guest Photo</ion-label>
+                    <input type="file" (change)="fileChangeEvent($event)" class="inputpincale">
+                </ion-col>
+
+                <ion-col size="12">
+                    <ion-label class="label_input" position="stacked">Adress Details</ion-label>
+                    <ion-textarea class="inputpincale" formControlName="address" placeholder="Adress Details"></ion-textarea>
+                    <div *ngIf="submitted && epf.address.errors" class="form-error-msg">
+                        <div class="form-error-msg" *ngIf="epf.address.errors.required">Address is required</div>
+                    </div>
+                </ion-col>
+
+                <ion-col size="12">
+                    <ion-label class="label_input" position="floating">Phone Number</ion-label>
+                    <ion-input class="inputpincale" formControlName="phone" placeholder="Phone Number"></ion-input>
+                    <div *ngIf="submitted && epf.phone.errors" class="form-error-msg">
+                        <div class="form-error-msg" *ngIf="epf.phone.errors.required">Phone is required</div>
+                    </div>
+                </ion-col>
+
+                <ion-col size="12">
+                    <ion-label class="label_input" position="floating">Whatsapp Number</ion-label>
+                    <ion-input class="inputpincale" formControlName="whatsappNo" placeholder="Whatsapp Number"></ion-input>
+                </ion-col>
+
+                <ion-col size="6">
+                    <ion-label class="label_input">Adults</ion-label>
+                    <ion-select class="inputpincale" interface="popover" formControlName="noOfAdults">
+                        <ion-select-option value="1">01</ion-select-option>
+                        <ion-select-option value="2">02</ion-select-option>
+                        <ion-select-option value="3">03</ion-select-option>
+                        <ion-select-option value="4">04</ion-select-option>
+                        <ion-select-option value="5">05</ion-select-option>
+                        <ion-select-option value="6">06</ion-select-option>
+                    </ion-select>
+                    <div *ngIf="submitted && epf.noOfAdults.errors" class="form-error-msg">
+                        <div class="form-error-msg" *ngIf="epf.noOfAdults.errors.required">Adult is required</div>
+                    </div>
+                </ion-col>
+                <ion-col size="6">
+                    <ion-label class="label_input">Kids</ion-label>
+                    <ion-select class="inputpincale" formControlName="noOfKids" interface="popover">
+                        <ion-select-option value="1">01</ion-select-option>
+                        <ion-select-option value="2">02</ion-select-option>
+                        <ion-select-option value="3">03</ion-select-option>
+                        <ion-select-option value="4">04</ion-select-option>
+                        <ion-select-option value="5">05</ion-select-option>
+                        <ion-select-option value="6">06</ion-select-option>
+                    </ion-select>
+                </ion-col>
+
+                <ion-col size="12 " class="label_input">
+                    <ion-label class="head_booking">Guest Details</ion-label>
+                </ion-col>
+                <ng-container *ngFor="let guest of checkInForm.get('guestDetails').controls;let i = index" [formGroup]="guest">
+                    <ion-col size="6">
+                        <ion-input class="inputpincale" formControlName="name" placeholder="Full Name"></ion-input>
+                    </ion-col>
+                    <ion-col size="6 ">
+                        <ion-input class="inputpincale" formControlName="mobile" placeholder="Phone Number"></ion-input>
+                    </ion-col>
+                </ng-container>
+                <ion-col size="12">
+                    <ion-list>
+                        <ion-item>
+                            <ion-label>Kitchen Set Required</ion-label>
+                            <ion-checkbox color="primary" slot="start" formControlName="useKitchenSet"></ion-checkbox>
+                        </ion-item>
+                    </ion-list>
+                </ion-col>
+                <ion-col size="12" *ngIf="checkInForm.value.useKitchenSet" >
+                  <ion-label class="label_input" position="floating">Kitchen Set Amount</ion-label>
+                  <ion-input class="inputpincale" formControlName="kitchenSetExpenseAmount" placeholder="Kitchen Set Amount"></ion-input>
+                </ion-col>
+
+                <ion-col size="12">
+                    <ion-list>
+                        <ion-list-header>Check In Check List</ion-list-header>
+                        <ion-item *ngFor="let check of checklists">
+                            <ion-label>{{check.label}}</ion-label>
+                            <ion-checkbox color="primary" [checked]="check.answer" slot="start" [(ngModel)]="check.answer" [ngModelOptions]="{ standalone: true }"></ion-checkbox>
+                        </ion-item>
+
+                    </ion-list>
+                </ion-col>
+                <ion-col size="12 ">
+                    <ion-button expand="block" [disabled]="isSpinner || !checklistValidation" (click)="checkIn()">CHECK IN
+                        <ion-spinner *ngIf="isSpinner" name="lines"></ion-spinner>
+                    </ion-button>
+                </ion-col>
+            </ion-row>
+        </form>
+    </ion-grid>
+</ion-content>

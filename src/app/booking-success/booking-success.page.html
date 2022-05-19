@@ -1,0 +1,57 @@
+<ion-toolbar>
+    <ion-buttons slot="start">
+        <ion-button (click)="closeModel()">
+            <ion-icon name="close"></ion-icon>
+        </ion-button>
+    </ion-buttons>
+
+</ion-toolbar>
+
+<ion-content text-center class="vertical-align-content">
+    <ion-grid class="centerdiv">
+        <ion-row>
+            <ion-col>
+                <h1 text-uppercase no-padding no-margin class="primary_icon">Thank you</h1>
+                <horizontalrule></horizontalrule>
+                <ion-grid>
+                    <ion-row class="justfy_con">
+
+                        <ion-col size="8" class="border">
+                            <ion-label class="bookingcontet">Full Name : {{successData.name}}</ion-label>
+                        </ion-col>
+                        <ion-col size="8 " class="border">
+                            <ion-label class="bookingcontet">Mobile : {{successData.phone}}</ion-label>
+                        </ion-col>
+                        <ion-col size="8 " class="border">
+                            <ion-label class="bookingcontet">No of People : {{successData.totalPeople}}</ion-label>
+                        </ion-col>
+                        <ion-col size="8 " class="border">
+                            <ion-label class="bookingcontet">Adults : {{successData.noOfAdults}}</ion-label>
+                        </ion-col>
+                        <ion-col size="8 " class="border">
+                            <ion-label class="bookingcontet">Kids : {{successData.noOfKids}}</ion-label>
+                        </ion-col>
+                        <ion-col size="8 " class="border">
+                            <ion-label class="bookingcontet">Booking Date : {{successData.bookingDate |date:'dd MMM yyyy'}}</ion-label>
+                        </ion-col>
+                        <ion-col size="8 " class="border">
+                            <ion-label class="bookingcontet">Check In : {{successData.checkIn |date:'dd MMM yyyy'}}</ion-label>
+                        </ion-col>
+                        <ion-col size="8 " class="border">
+                            <ion-label class="bookingcontet">Check Out : {{successData.checkOut |date:'dd MMM yyyy'}}</ion-label>
+                        </ion-col>
+                        <ion-col size="5 " class="border">
+                            <ion-button class=" share_btn">Share</ion-button>
+                        </ion-col>
+
+
+
+
+
+                    </ion-row>
+
+                </ion-grid>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

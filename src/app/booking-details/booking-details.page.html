@@ -1,0 +1,271 @@
+<ion-toolbar>
+    <ion-buttons slot="start">
+        <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+        <ion-button (click)="openWhatsApp()" href="https://wa.me/919633325528?text=Hello%20world">
+            <ion-icon name="logo-whatsapp"></ion-icon>
+        </ion-button>
+    </ion-buttons>
+    <ion-title class="app_titel">Booking Details</ion-title>
+</ion-toolbar>
+<!-- Use a trigger -->
+
+
+
+<ion-content>
+    <ion-card [ngClass]="getClass(booking_details.bookingStatus)">
+        <ion-grid>
+            <ion-row>
+              <ion-col size="6 " class="">
+                  <ion-label class="head_booking">{{booking_details?.roomId?.name}}</ion-label>
+              </ion-col>
+              <ion-col size="6" class="ion-text-end">
+                  <ion-button class="cnfbtn">{{booking_details.bookingStatus}}</ion-button>
+              </ion-col>
+              <ion-col size="6 " class="border">
+                <ion-label class="bookingcontet">Booking Date : </ion-label>
+              </ion-col>
+              <ion-col size="6" class="border">
+                  <ion-label class="bookingcontet">{{booking_details.bookingDate |date:'dd MMM yyyy'}}</ion-label>
+              </ion-col>
+              <ion-col size="6 " class="border">
+                  <ion-label class="bookingcontet">Check In </ion-label>
+              </ion-col>
+              <ion-col size="6" class="border">
+                  <ion-label class="bookingcontet">{{booking_details.checkIn |date:'dd MMM yyyy'}}</ion-label>
+              </ion-col>
+
+              <ion-col size="6 " class="border">
+                  <ion-label class="bookingcontet">Check Out </ion-label>
+              </ion-col>
+              <ion-col size="6" class="border">
+                  <ion-label class="bookingcontet">{{booking_details.checkOut |date:'dd MMM yyyy'}}</ion-label>
+              </ion-col>
+              <ion-col size="6 " class="border">
+                  <ion-label class="bookingcontet">Full Name </ion-label>
+              </ion-col>
+              <ion-col size="6" class="border">
+                  <ion-label class="bookingcontet">{{booking_details.name}}</ion-label>
+              </ion-col>
+
+              <ion-col size="6 " class="border">
+                  <ion-label class="bookingcontet">Mobile </ion-label>
+              </ion-col>
+              <ion-col size="6" class="border">
+                  <ion-label class="bookingcontet">{{booking_details.phone}}</ion-label>
+              </ion-col>
+              <ion-col size="6 " class="border">
+                  <ion-label class="bookingcontet">Whatsapp</ion-label>
+              </ion-col>
+              <ion-col size="6" class="border">
+                  <ion-label class="bookingcontet">{{booking_details.whatsappNo}}</ion-label>
+              </ion-col>
+              <ion-col size="6 " class="border">
+                  <ion-label class="bookingcontet">No of People </ion-label>
+              </ion-col>
+              <ion-col size="6" class="border">
+                  <ion-label class="bookingcontet">{{booking_details.totalPeople}}</ion-label>
+              </ion-col>
+              <ion-col size="6 " class="border">
+                  <ion-label class="bookingcontet">Adults</ion-label>
+              </ion-col>
+              <ion-col size="6" class="border">
+                  <ion-label class="bookingcontet">{{booking_details.noOfAdults}}</ion-label>
+              </ion-col>
+              <ion-col size="6 " class="border">
+                  <ion-label class="bookingcontet">Kids </ion-label>
+              </ion-col>
+              <ion-col size="6" class="border">
+                  <ion-label class="bookingcontet">{{booking_details.noOfKids}}</ion-label>
+              </ion-col>
+              <ion-col size="6 " class="border">
+                  <ion-label class="bookingcontet">Booking Amount </ion-label>
+              </ion-col>
+              <ion-col size="6" class="border">
+                  <ion-label class="bookingcontet">{{booking_details.bookingAmount}}</ion-label>
+              </ion-col>
+              <ion-col size="6 " class="border">
+                  <ion-label class="bookingcontet">Kitchen Set Amount : </ion-label>
+              </ion-col>
+              <ion-col size="6" class="border">
+                  <ion-label class="bookingcontet">{{booking_details.kitchenSetAmount}}</ion-label>
+              </ion-col>
+              <ion-col size="6 " class="border">
+                  <ion-label class="bookingcontet">Expense Amount : </ion-label>
+              </ion-col>
+              <ion-col size="6" class="border">
+                  <ion-label class="bookingcontet">{{booking_details.totalExpenseAmount}}</ion-label>
+              </ion-col>
+              <ion-col size="6 " class="border">
+                  <ion-label class="bookingcontet">Discount : </ion-label>
+              </ion-col>
+              <ion-col size="6" class="border">
+                  <ion-label class="bookingcontet">{{booking_details.totalDiscountAmount}}</ion-label>
+              </ion-col>
+              <ion-col size="6 " class="border">
+                  <ion-label class="bookingcontet">Payable Amount : </ion-label>
+              </ion-col>
+              <ion-col size="6" class="border">
+                  <ion-label class="bookingcontet bold">{{booking_details.totalAmountToPay}}</ion-label>
+              </ion-col>
+              <ion-col size="6 " class="border">
+                <ion-label class="bookingcontet"> Paid Amount </ion-label>
+              </ion-col>
+              <ion-col size="6" class="border">
+                  <ion-label class="bookingcontet">{{booking_details.paidAmount}}</ion-label>
+              </ion-col>
+              <ion-col size="6 " class="border">
+                  <ion-label class="bookingcontet bold"> Balance Amount </ion-label>
+              </ion-col>
+              <ion-col size="6" class="border">
+                  <ion-label class="bookingcontet bold">{{booking_details.balanceAmount}}</ion-label>
+              </ion-col>
+
+
+
+
+            </ion-row>
+        </ion-grid>
+    </ion-card>
+
+    <ng-container *ngIf="payment_details?.length > 0">
+        <ion-grid>
+            <ion-row>
+                <ion-col size="8 ">
+                    <ion-label class="head_booking_last">Payment Details</ion-label>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+
+        <ion-card class="main_card_booking" *ngFor="let payment of payment_details">
+            <ion-grid>
+                <ion-row>
+                  <ion-col size="6 " class="border">
+                    <ion-label class="bookingcontet">Date : {{payment.date |date:'dd MMM yyyy'}}</ion-label>
+                  </ion-col>
+                  <ion-col size="6" class="border">
+                      <ion-label class="bookingcontet">{{payment.paymentMode}}<span *ngIf="payment.bankDetailId?.name" > ({{payment.bankDetailId?.name}})</span></ion-label>
+                  </ion-col>
+                  <ion-col size="12 " class="border">
+                    <ion-label class="bookingcontet">Amount : {{payment.amount}}</ion-label>
+                  </ion-col>
+                  <ion-col size="12 " class="border" *ngIf="payment.discountAmount" >
+                    <ion-label class="bookingcontet">Discount : {{payment.discountAmount}}</ion-label>
+                  </ion-col>
+                  <ion-col size="12 " class="border"  *ngIf="payment.comments" >
+                    <ion-label class="bookingcontet">Comment : {{payment.comments}}</ion-label>
+                  </ion-col>
+
+                </ion-row>
+            </ion-grid>
+        </ion-card>
+    </ng-container>
+
+
+
+
+    <ng-container *ngIf="expense_data?.length > 0">
+        <ion-grid>
+            <ion-row>
+                <ion-col size="8 ">
+                    <ion-label class="head_booking_last">Food Details</ion-label>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+
+        <ion-card class="main_card_booking" *ngFor="let exp of expense_data">
+            <ion-grid>
+                <ion-row>
+
+                    <ion-col size="8 " class="border">
+                        <ion-label class="bookingcontet">Title: {{exp.title}}</ion-label>
+                    </ion-col>
+                    <ion-col size="4" class="border">
+                        <ion-label class="bookingcontet">{{exp.requestedStatus}}</ion-label>
+                    </ion-col>
+                    <ion-col size="4 " class="border">
+                        <ion-label class="bookingcontet"> Qty : {{exp.quanity}} </ion-label>
+                    </ion-col>
+                    <ion-col size="8 " class="border">
+                        <ion-label class="bookingcontet">Price : {{exp.amount | currency :'INR'}} </ion-label>
+                    </ion-col>
+                    <ion-col size="12 " class="border" *ngIf="exp?.requestedStatus=='REQUESTED' && exp.expectedDeliveryTime" >
+                        <ion-label class="bookingcontet">Delivery Time : {{exp.expectedDeliveryTime | date :'dd MMM yyyy h:mm a'}} </ion-label>
+                    </ion-col>
+                    <ion-col size="12 " class="border" *ngIf="exp?.requestedStatus=='DELIVERED' && exp.deliveredOn" >
+                        <ion-label class="bookingcontet">Delivered On : {{exp.deliveredOn | date :'dd MMM yyyy h:mm a'}} </ion-label>
+                    </ion-col>
+
+                    <ion-col class="ion-text-end" col-4 (click)="markDeliverd(exp)" *ngIf="exp?.requestedStatus=='REQUESTED'">
+                        <span class="primary clndr_btn">Mark As Deliverd </span>
+                    </ion-col>
+
+                </ion-row>
+
+            </ion-grid>
+        </ion-card>
+    </ng-container>
+
+
+    <ng-container *ngIf="guest_details?.length > 0">
+        <ion-grid>
+            <ion-row>
+                <ion-col size="8 ">
+                    <ion-label class="head_booking_last">Guest Details</ion-label>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+
+        <ion-card class="main_card_booking" *ngFor="let guest of guest_details">
+            <ion-grid>
+                <ion-row>
+
+                    <ion-col size="12" class="border">
+                        <ion-label class="bookingcontet">Name: {{guest.name}}</ion-label>
+                    </ion-col>
+                    <ion-col size="12 " class="border">
+                        <ion-label class="bookingcontet"> Mobile : {{guest.mobile}} </ion-label>
+                    </ion-col>
+                </ion-row>
+
+            </ion-grid>
+        </ion-card>
+    </ng-container>
+
+    <ion-grid>
+        <ion-row>
+
+          <ion-col  [size]="(['REQUESTED','CONFIRMED','CHECKED_IN' ].includes(booking_details.bookingStatus) && checkCheckinDate())  ?6:12 "  *ngIf="(booking_details.bookingStatus=='REQUESTED' || booking_details.bookingStatus=='CONFIRMED' ) ">
+            <ion-button expand="block " (click)="cancelBooking() ">CANCEL</ion-button>
+          </ion-col>
+          <ion-col [size]="booking_details.bookingStatus == 'CHECKED_OUT' ?12:6 " *ngIf="booking_details.bookingStatus == 'CHECKED_IN' || booking_details.bookingStatus == 'CHECKED_OUT'" (click)="openFeedback()">
+            <ion-button expand="block">{{booking_details.feedback?._id?'View':'Add'}} Feedback</ion-button>
+          </ion-col>
+          <ion-col [size]="6" >
+              <ion-button expand="block" *ngIf="(booking_details.bookingStatus == 'REQUESTED' || booking_details.bookingStatus == 'CONFIRMED') && checkCheckinDate() " (click)="openCheckIn()">CHECK IN</ion-button>
+              <ion-button expand="block" *ngIf="booking_details.bookingStatus == 'CHECKED_IN'" (click)="openCheckout()">CHECK OUT</ion-button>
+          </ion-col>
+
+
+        </ion-row>
+    </ion-grid>
+
+
+    <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+        <ion-fab-button color="dark">
+            <ion-icon name="add-outline"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-list side="top">
+            <ion-fab-button class="toggle_btn" color="light" (click)="openPayment()">
+                <ion-icon name="card-outline"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button class="toggle_btn" color="light" (click)="addFoodDetails()">
+                <ion-icon name="fast-food-outline"></ion-icon>
+            </ion-fab-button>
+
+        </ion-fab-list>
+    </ion-fab>
+
+
+</ion-content>

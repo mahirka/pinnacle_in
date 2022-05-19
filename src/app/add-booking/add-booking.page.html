@@ -1,0 +1,167 @@
+<ion-toolbar>
+    <ion-buttons slot="start">
+        <ion-button (click)="closeModel()">
+            <ion-icon name="close"></ion-icon>
+        </ion-button>
+    </ion-buttons>
+    <ion-title class="app_titel">Add Booking</ion-title>
+</ion-toolbar>
+
+<ion-content>
+
+    <ion-grid>
+        <form [formGroup]="bookingForm">
+            <ion-row>
+                <ion-col size="12">
+                    <ion-label class="label_input" position="floating">Booking Date</ion-label>
+                    <ion-input type="date" class="inputpincale" [min]="minDate" formControlName="bookingDate"></ion-input>
+                    <div *ngIf="submitted && epf.bookingDate.errors" class="form-error-msg">
+                        <div class="form-error-msg" *ngIf="epf.bookingDate.errors.required">Date is required</div>
+                    </div>
+                </ion-col>
+
+                <ion-col size="12">
+                    <ion-label class="label_input" position="floating">Check in Date</ion-label>
+                    <ion-input type="date" class="inputpincale" [min]="minDate" formControlName="checkIn"></ion-input>
+                    <div *ngIf="submitted && epf.checkIn.errors" class="form-error-msg">
+                        <div class="form-error-msg" *ngIf="epf.checkIn.errors.required">Check In Date is required</div>
+                    </div>
+                </ion-col>
+
+                <ion-col size="12">
+                    <ion-label class="label_input" position="floating">Check Out Date</ion-label>
+                    <ion-input type="date" class="inputpincale" formControlName="checkOut"></ion-input>
+                    <div *ngIf="submitted && epf.checkOut.errors" class="form-error-msg">
+                        <div class="form-error-msg" *ngIf="epf.checkOut.errors.required">Check Out Date is required</div>
+                    </div>
+                </ion-col>
+
+                <!-- <ion-col size="6">
+      <ion-label  class="label_input"position="floating">Time</ion-label>
+      <ion-input  type="time" class="inputpincale"></ion-input>
+    </ion-col> -->
+
+                <ion-col siz="12">
+
+                    <ion-label class="label_input" position="floating">Full Name</ion-label>
+                    <ion-input class="inputpincale" placeholder="Full Name" formControlName="name"></ion-input>
+                    <div *ngIf="submitted && epf.name.errors" class="form-error-msg">
+                        <div class="form-error-msg" *ngIf="epf.name.errors.required">Name is required</div>
+                    </div>
+                </ion-col>
+
+                <ion-col siz="12">
+
+                    <ion-label class="label_input" position="floating">Email</ion-label>
+                    <ion-input class="inputpincale" placeholder="Email" formControlName="email"></ion-input>
+                    <div *ngIf="submitted && epf.email.errors" class="form-error-msg">
+                        <div class="form-error-msg" *ngIf="epf.email.errors.required">Email is required</div>
+                    </div>
+                </ion-col>
+
+
+                <ion-col size="12">
+                    <ion-label class="label_input" position="stacked">Address Details</ion-label>
+                    <ion-textarea class="inputpincale" placeholder="Adress Details" formControlName="address"></ion-textarea>
+                    <div *ngIf="submitted && epf.address.errors" class="form-error-msg">
+                        <div class="form-error-msg" *ngIf="epf.address.errors.required">Address is required</div>
+                    </div>
+                </ion-col>
+
+                <ion-col size="12">
+                    <ion-label class="label_input" position="floating">Phone Number</ion-label>
+                    <ion-input class="inputpincale" placeholder="Phone Number" formControlName="phone"></ion-input>
+                    <div *ngIf="submitted && epf.phone.errors" class="form-error-msg">
+                        <div class="form-error-msg" *ngIf="epf.phone.errors.required">Phone is required</div>
+                    </div>
+                </ion-col>
+
+                <ion-col size="12">
+                    <ion-label class="label_input" position="floating">Whatsapp Number</ion-label>
+                    <ion-input class="inputpincale" placeholder="Whatsapp Number" formControlName="whatsappNo"></ion-input>
+
+                </ion-col>
+                <ion-col siz="12">
+
+                    <ion-label class="label_input" position="floating">Booking Amount</ion-label>
+                    <ion-input class="inputpincale" placeholder="amount" formControlName="bookingAmount"></ion-input>
+                    <div *ngIf="submitted && epf.bookingAmount.errors" class="form-error-msg">
+                        <div class="form-error-msg" *ngIf="epf.bookingAmount.errors.required">Amount is required</div>
+                    </div>
+                </ion-col>
+                <ion-col size="12 " class="label_input">
+                    <ion-label class="head_booking">{{roomData.name}}</ion-label>
+                </ion-col>
+                <ng-container *ngFor="let people of bookingForm.get('peoples').controls;let i = index" [formGroup]="people">
+                    <ion-col size="12 " class="label_input" *ngIf=" i > 0">
+                        <ion-label class="label_input">Choose Villa </ion-label>
+                        <ion-select class="inputpincale" formControlName="roomId" interface="popover">
+                            <ion-select-option *ngFor="let room of rooms" value="{{room._id}}">{{room.name}}</ion-select-option>
+                        </ion-select>
+                    </ion-col>
+                    <ion-col size="6">
+                        <ion-label class="label_input">Adults</ion-label>
+                        <ion-select class="inputpincale" formControlName="noOfAdults" interface="popover">
+                            <ion-select-option value="1" >01</ion-select-option>
+                            <ion-select-option value="2">02</ion-select-option>
+                            <ion-select-option value="3">03</ion-select-option>
+                            <ion-select-option value="4">04</ion-select-option>
+                            <ion-select-option value="5">05</ion-select-option>
+                            <ion-select-option value="6">06</ion-select-option>
+                        </ion-select>
+                        <!-- <div *ngIf="submitted && epf.noOfAdults.errors" class="form-error-msg">
+                            <div class="form-error-msg" *ngIf="epf.noOfAdults.errors.required">Adults is required</div>
+                        </div> -->
+                    </ion-col>
+                    <ion-col size="6">
+                        <ion-label class="label_input">Kids</ion-label>
+                        <ion-select class="inputpincale" formControlName="noOfKids" interface="popover">
+                            <ion-select-option value="0" >00</ion-select-option>
+                            <ion-select-option value="1" selected>01</ion-select-option>
+                            <ion-select-option value="2">02</ion-select-option>
+                            <ion-select-option value="3">03</ion-select-option>
+                            <ion-select-option value="4">04</ion-select-option>
+                            <ion-select-option value="5">05</ion-select-option>
+                            <ion-select-option value="6">06</ion-select-option>
+                        </ion-select>
+                    </ion-col>
+                </ng-container>
+
+
+                <ion-col size="6" (click)="addNewAddressGroup()">
+                    <ion-button expand="block">ADD MORE VILLA</ion-button>
+                </ion-col>
+
+                <!--
+                <ion-col size="6">
+                    <ion-label class="label_input">Adults</ion-label>
+                    <ion-select class="inputpincale" interface="popover">
+                        <ion-select-option value="" selected>01</ion-select-option>
+                        <ion-select-option value="">02</ion-select-option>
+                        <ion-select-option value="">03</ion-select-option>
+                        <ion-select-option value="">04</ion-select-option>
+                        <ion-select-option value="">05</ion-select-option>
+                        <ion-select-option value="">06</ion-select-option>
+                    </ion-select>
+                </ion-col>
+                <ion-col size="6">
+                    <ion-label class="label_input">Kids</ion-label>
+                    <ion-select class="inputpincale" interface="popover">
+                        <ion-select-option value="" selected>01</ion-select-option>
+                        <ion-select-option value="">02</ion-select-option>
+                        <ion-select-option value="">03</ion-select-option>
+                        <ion-select-option value="">04</ion-select-option>
+                        <ion-select-option value="">05</ion-select-option>
+                        <ion-select-option value="">06</ion-select-option>
+                    </ion-select>
+                </ion-col> -->
+
+                <ion-col size="12 " (click)="addBooking()">
+                    <ion-button expand="block" [disabled]="isSpinner">Book
+                        <ion-spinner *ngIf="isSpinner" name="lines"></ion-spinner>
+                    </ion-button>
+                </ion-col>
+            </ion-row>
+        </form>
+    </ion-grid>
+</ion-content>

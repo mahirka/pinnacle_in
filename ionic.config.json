@@ -1,0 +1,7 @@
+{
+  "name": "pinnacle",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

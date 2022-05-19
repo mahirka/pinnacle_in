@@ -1,0 +1,85 @@
+
+
+<ion-content padding="true" class="login ion-padding-top ion-padding-bottom">
+    <ion-grid class="p-25 mt-40" id="container">
+        
+          
+        <ion-row>
+            <ion-col size="12" class="p_0">
+                <h1><strong class="font-16"> Sign</strong> In</h1>
+            </ion-col>
+
+
+            <ion-col size="12" class="mb15 pb0 pt-0 pb-0">
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmitMobile()">
+                    <div class="forgot_pass_pop">
+                        <ion-text class="mb10">Enter Your User Name</ion-text>
+                        <div>
+                            <!-- <div class="div_inputs">
+                <ion-input type="number" maxlength="13" class="cc_number" formControlName="mobile"></ion-input>
+              </div> -->
+
+                            <div class="div_inputs">
+                                <ion-input type="text" formControlName="username" class="cc_number"></ion-input>
+                            </div>
+
+                            <div *ngIf="submitted && apf.username.errors" class="form-error-msg">
+                                <div class="form-error-msg" *ngIf="apf.username.errors.required">Username is required</div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="forgot_pass_pop">
+                        <ion-text class="mb10">Enter Your Password</ion-text>
+                        <div>
+                            <!-- <div class="div_inputs">
+                <ion-input type="number" maxlength="13" class="cc_number" formControlName="mobile"></ion-input>
+              </div> -->
+
+                            <div class="div_inputs">
+                                <ion-input type="password" formControlName="password" class="cc_number"></ion-input>
+                            </div>
+
+                            <div *ngIf="submitted && apf.password.errors" class="form-error-msg">
+                                <div class="form-error-msg" *ngIf="apf.password.errors.required">Password is required</div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    
+                </form>
+            </ion-col>
+
+
+
+
+        </ion-row>
+
+        <ion-row class="mt-20">
+            <ion-col size="12" class="ion-text-center">
+                <ion-text class=" medium block" (click)="onSubmitMobile()">Login
+                    <ion-icon class="font-12" name="person-outline"></ion-icon>
+                </ion-text>
+            </ion-col>
+       
+        </ion-row>
+       
+        <!-- <ion-row class="auth_text_row">
+      <ion-col size="12" class="ion-text-center pt-0">
+        <ion-text color="dark" class="auth_text   medium" (click)="onForgotPassword()">Forgot Password?</ion-text>
+      </ion-col> -->
+        <!-- <ion-col size="6" class="ion-text-end pt-0">
+        <ion-text (click)="register()" color="dark" class="auth_text">Create an Account?</ion-text>
+      </ion-col> -->
+        <!-- </ion-row> -->
+        <!-- <ion-row class="auth_buttons">
+      <ion-col size="10" class="p_0" (click)="onSubmitLogin()">
+        <ion-button color="primary" class="auth_in_btn">Sign In</ion-button>
+      </ion-col>
+    </ion-row> -->
+    </ion-grid>
+</ion-content>
+<div class="bottom_bg_img"> </div>

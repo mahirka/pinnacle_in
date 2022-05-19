@@ -1,0 +1,252 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+<ion-toolbar>
+  <ion-title>Title Only</ion-title>
+</ion-toolbar>
+
+<ion-toolbar>
+  <ion-buttons slot="start">
+    <ion-back-button></ion-back-button>
+  </ion-buttons>
+  <ion-title>Back Button</ion-title>
+</ion-toolbar>
+
+<ion-toolbar>
+  <ion-title size="small">Small Title above a Default Title</ion-title>
+</ion-toolbar>
+<ion-toolbar>
+  <ion-title>Default Title</ion-title>
+</ion-toolbar>
+
+<ion-toolbar>
+  <ion-buttons slot="secondary">
+    <ion-button>
+      <ion-icon slot="icon-only" name="person-circle"></ion-icon>
+    </ion-button>
+    <ion-button>
+      <ion-icon slot="icon-only" name="search"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+  <ion-buttons slot="primary">
+    <ion-button color="secondary">
+      <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+  <ion-title>Default Buttons</ion-title>
+</ion-toolbar>
+
+<ion-toolbar>
+  <ion-buttons slot="secondary">
+    <ion-button fill="solid">
+      <ion-icon slot="start" name="person-circle"></ion-icon>
+      Contact
+    </ion-button>
+  </ion-buttons>
+  <ion-title>Solid Buttons</ion-title>
+  <ion-buttons slot="primary">
+    <ion-button fill="solid" color="secondary">
+      Help
+      <ion-icon slot="end" name="help-circle"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+</ion-toolbar>
+
+<ion-toolbar>
+  <ion-buttons slot="secondary">
+    <ion-button fill="outline">
+      <ion-icon slot="start" name="star"></ion-icon>
+      Star
+    </ion-button>
+  </ion-buttons>
+  <ion-title>Outline Buttons</ion-title>
+  <ion-buttons slot="primary">
+    <ion-button color="danger" fill="outline">
+      Edit
+      <ion-icon slot="end" name="create"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+</ion-toolbar>
+
+<ion-toolbar>
+  <ion-buttons slot="secondary">
+    <ion-button>
+      Account
+    </ion-button>
+  </ion-buttons>
+  <ion-buttons slot="primary">
+    <ion-button color="danger">
+      Edit
+    </ion-button>
+  </ion-buttons>
+  <ion-title>Text Only Buttons</ion-title>
+</ion-toolbar>
+
+<ion-toolbar>
+  <ion-buttons slot="start">
+    <ion-menu-button autoHide="false"></ion-menu-button>
+
+  </ion-buttons>
+  <ion-buttons slot="secondary">
+    <ion-button>
+      <ion-icon slot="icon-only" name="star"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+  <ion-title>Left side menu toggle</ion-title>
+</ion-toolbar>
+
+<ion-toolbar>
+  <ion-buttons slot="primary">
+    <ion-button (click)="clickedStar()">
+      <ion-icon slot="icon-only" name="star"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+  <ion-title>Right side menu toggle</ion-title>
+  <ion-buttons slot="end">
+    <ion-menu-button autoHide="false"></ion-menu-button>
+
+  </ion-buttons>
+</ion-toolbar>
+
+<ion-toolbar>
+  <ion-buttons slot="primary">
+    <ion-button (click)="clickedSearch()">
+      <ion-icon slot="icon-only" name="search"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+  <ion-searchbar placeholder="Search Favorites"></ion-searchbar>
+</ion-toolbar>
+
+<ion-toolbar>
+  <ion-segment value="all">
+    <ion-segment-button value="all">
+      All
+    </ion-segment-button>
+    <ion-segment-button value="favorites">
+      Favorites
+    </ion-segment-button>
+  </ion-segment>
+</ion-toolbar>
+
+<ion-toolbar color="secondary">
+  <ion-buttons slot="secondary">
+    <ion-button>
+      <ion-icon slot="icon-only" name="person-circle"></ion-icon>
+    </ion-button>
+    <ion-button>
+      <ion-icon slot="icon-only" name="search"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+  <ion-buttons slot="primary">
+    <ion-button color="primary">
+      <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+  <ion-title>Secondary Toolbar</ion-title>
+</ion-toolbar>
+
+<ion-toolbar color="dark">
+  <ion-buttons slot="secondary">
+    <ion-button>
+      <ion-icon slot="icon-only" name="person-circle"></ion-icon>
+    </ion-button>
+    <ion-button>
+      <ion-icon slot="icon-only" name="search"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+  <ion-buttons slot="primary">
+    <ion-button color="danger">
+      <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+  <ion-title>Dark Toolbar</ion-title>
+</ion-toolbar>
+  <ion-list>
+    <ion-list-header>
+      <ion-label>
+        Interface Options
+      </ion-label>
+    </ion-list-header>
+  
+    <ion-item>
+      <ion-label>Alert</ion-label>
+      <ion-select [interfaceOptions]="customAlertOptions" interface="alert" multiple="true" placeholder="Select One">
+        <ion-select-option value="bacon">Bacon</ion-select-option>
+        <ion-select-option value="olives">Black Olives</ion-select-option>
+        <ion-select-option value="xcheese">Extra Cheese</ion-select-option>
+        <ion-select-option value="peppers">Green Peppers</ion-select-option>
+        <ion-select-option value="mushrooms">Mushrooms</ion-select-option>
+        <ion-select-option value="onions">Onions</ion-select-option>
+        <ion-select-option value="pepperoni">Pepperoni</ion-select-option>
+        <ion-select-option value="pineapple">Pineapple</ion-select-option>
+        <ion-select-option value="sausage">Sausage</ion-select-option>
+        <ion-select-option value="Spinach">Spinach</ion-select-option>
+      </ion-select>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label>Popover</ion-label>
+      <ion-select [interfaceOptions]="customPopoverOptions" interface="popover" placeholder="Select One">
+        <ion-select-option value="brown">Brown</ion-select-option>
+        <ion-select-option value="blonde">Blonde</ion-select-option>
+        <ion-select-option value="black">Black</ion-select-option>
+        <ion-select-option value="red">Red</ion-select-option>
+      </ion-select>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label>Action Sheet</ion-label>
+      <ion-select [interfaceOptions]="customActionSheetOptions" interface="action-sheet" placeholder="Select One">
+        <ion-select-option value="red">Red</ion-select-option>
+        <ion-select-option value="purple">Purple</ion-select-option>
+        <ion-select-option value="yellow">Yellow</ion-select-option>
+        <ion-select-option value="orange">Orange</ion-select-option>
+        <ion-select-option value="green">Green</ion-select-option>
+      </ion-select>
+    </ion-item>
+  
+  </ion-list>
+
+  <ion-text color="secondary">
+    <h1>H1: The quick brown fox jumps over the lazy dog</h1>
+  </ion-text>
+  
+  <ion-text color="primary">
+    <h2>H2: The quick brown fox jumps over the lazy dog</h2>
+  </ion-text>
+  
+  <ion-text color="light">
+    <h3>H3: The quick brown fox jumps over the lazy dog</h3>
+  </ion-text>
+  
+  <ion-text color="danger">
+    <h4 >H4: The quick brown fox jumps over the lazy dog</h4>
+  </ion-text>
+  
+  <ion-text color="dark">
+    <h5>H5: The quick brown fox jumps over the lazy dog</h5>
+  </ion-text>
+  
+  <p>
+    I saw a werewolf with a Chinese menu in his hand.
+    Walking through the <ion-text color="danger"><sub>streets</sub></ion-text> of Soho in the rain.
+    He <ion-text color="primary"><i>was</i></ion-text> looking for a place called Lee Ho Fook's.
+    Gonna get a <ion-text color="secondary"><a>big dish of beef chow mein.</a></ion-text>
+    <ion-text color="danger"><ion-icon name="cut"></ion-icon></ion-text>
+  </p>
+
+
+</ion-content>
+
+<!-- Footer without a border -->
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>Footer - No Border</ion-title>
+  </ion-toolbar>
+</ion-footer>

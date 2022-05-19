@@ -1,0 +1,24 @@
+
+.app_titel {
+    text-align: center;
+}
+.head_booking{
+    font-size: 15px;
+    font-weight: 500;
+}
+.main_card_booking
+{
+    background: var(--ion-color-greycard);
+}
+ion-card .list-md {
+    background: var(--ion-color-greycard);
+}
+
+.bookingcontet {
+    color: black;
+    font-size: 14px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    box-sizing: border-box;
+}

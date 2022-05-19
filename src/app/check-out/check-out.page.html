@@ -1,0 +1,121 @@
+<ion-toolbar>
+    <ion-buttons slot="start">
+        <ion-button (click)="closeModel()">
+            <ion-icon name="close"></ion-icon>
+        </ion-button>
+    </ion-buttons>
+
+    <ion-title class="app_titel">Check Out</ion-title>
+</ion-toolbar>
+
+<ion-content class="modalPd">
+
+    <ion-grid>
+        <ion-row>
+            <ion-col size="12">
+                <ion-label class="label_input" position="floating">Check Out Date</ion-label>
+                <ion-input type="date" [(ngModel)]="checkout" class="inputpincale"></ion-input>
+            </ion-col>
+
+        </ion-row>
+    </ion-grid>
+
+    <ion-grid>
+        <ion-row>
+            <ion-col size="8 ">
+                <ion-label class="head_booking">Payment Details </ion-label>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+    <ion-card class="main_card_booking">
+        <ion-grid>
+            <ion-row>
+
+                <ion-col size="6 " class="border">
+                    <ion-label class="bookingcontet">Total Booking Amount
+                    </ion-label>
+                </ion-col>
+                <ion-col size="6" class="border">
+                    <ion-label class="bookingcontet">{{bookingData?.bookingAmount}}</ion-label>
+                </ion-col>
+                <ion-col size="6 " class="border">
+                    <ion-label class="bookingcontet">Total Expenses</ion-label>
+                </ion-col>
+                <ion-col size="6" class="border">
+                    <ion-label class="bookingcontet">{{bookingData?.totalExpenseAmount}}</ion-label>
+                </ion-col>
+                <ion-col size="6 " class="border">
+                    <ion-label class="bookingcontet bold ">Grand Total</ion-label>
+                </ion-col>
+                <ion-col size="6" class="border">
+                    <ion-label class="bookingcontet bold">{{bookingData?.bookingAmount + bookingData?.totalExpenseAmount}}</ion-label>
+                </ion-col>
+                <ion-col size="6 " class="border">
+                    <ion-label class="bookingcontet ">Paid Amount</ion-label>
+                </ion-col>
+                <ion-col size="6" class="border">
+                    <ion-label class="bookingcontet">{{bookingData?.paidAmount}}</ion-label>
+                </ion-col>
+                <ion-col size="6 " class="border">
+                    <ion-label class="bookingcontet  bold">Total Due</ion-label>
+                </ion-col>
+                <ion-col size="6" class="border">
+                    <ion-label class="bookingcontet bold">{{dueAmount}}</ion-label>
+                </ion-col>
+
+            </ion-row>
+        </ion-grid>
+    </ion-card>
+
+
+    <ion-grid>
+        <ion-row>
+            <ion-col size="8 ">
+                <ion-label class="head_booking">Add Payment </ion-label>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+    <ion-grid>
+        <ion-row>
+            <ion-col siz="12">
+
+                <ion-label class="label_input" position="floating">Amount</ion-label>
+                <ion-input class="inputpincale" [(ngModel)]="dueAmount" placeholder="Amount"></ion-input>
+            </ion-col>
+
+            <ion-col size="12">
+                <ion-label class="label_input">Mode of Payment</ion-label>
+                <ion-select class="inputpincale" [(ngModel)]="payment_mode" interface="popover">
+                    <ion-select-option value="CASH" selected>Cash</ion-select-option>
+                    <ion-select-option value="TRANSFER">Transfer</ion-select-option>
+                </ion-select>
+            </ion-col>
+
+        </ion-row>
+        <ion-col size="12">
+            <ion-list>
+                <ion-list-header>Check In Check List</ion-list-header>
+                <ion-item *ngFor="let check of checklists">
+                    <ion-label>{{check.label}}</ion-label>
+                    <ion-checkbox color="primary" [checked]="check.answer" slot="start" [(ngModel)]="check.answer" [ngModelOptions]="{ standalone: true }"></ion-checkbox>
+                </ion-item>
+
+            </ion-list>
+        </ion-col>
+    </ion-grid>
+
+    <ion-grid>
+        <ion-row>
+
+            <ion-col size="12 ">
+                <ion-button expand="block" [disabled]="isSpinner && !checklistValidation" (click)="Submit()">CHECK OUT SUBMIT
+                    <ion-spinner *ngIf="isSpinner" name="lines"></ion-spinner>
+                </ion-button>
+            </ion-col>
+
+        </ion-row>
+    </ion-grid>
+
+</ion-content>

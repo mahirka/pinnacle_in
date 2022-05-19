@@ -1,0 +1,56 @@
+<ion-toolbar>
+  <ion-buttons slot="start">
+    <ion-menu-button autoHide="false"></ion-menu-button>
+
+  </ion-buttons>
+  <ion-buttons slot="secondary">
+    <ion-button>
+      <ion-icon name="search-outline"></ion-icon>
+    </ion-button>
+    <ion-button>
+      <ion-icon name="notifications-outline"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+  <ion-title class="app_titel">New Products</ion-title>
+</ion-toolbar>
+
+
+<ion-content>
+
+  <ion-card class="main_card_booking">
+    
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <ion-label class="label_input" position="floating"> Product Name</ion-label>
+        <ion-input type="text" class="inputpincale" aria-placeholder=" Product Name"></ion-input>
+      </ion-col>
+      <ion-col size="12">
+        <ion-label class="label_input" position="floating"> Product Image</ion-label>
+        <ion-input type="file" class="inputpincale" aria-placeholder="  Image"></ion-input>
+      </ion-col>
+      <ion-col size="12">
+        <ion-label class="label_input">Select Category</ion-label>
+        <ion-select class="inputpincale" interface="popover">
+          <ion-select-option value="" selected>Category</ion-select-option>
+          <ion-select-option value="">Category</ion-select-option>
+          <ion-select-option value="">Category</ion-select-option>
+          <ion-select-option value="">Category</ion-select-option>
+          <ion-select-option value="">Category</ion-select-option>
+          <ion-select-option value="">Category</ion-select-option>
+        </ion-select>
+      </ion-col>
+ 
+   <ion-col size="12"  >
+    <ion-button  class="ion-float-right" expand="block">Submit</ion-button>
+  </ion-col>
+ 
+    </ion-row>
+  
+  </ion-grid>
+  </ion-card>
+  
+  
+  
+  
+  </ion-content>
